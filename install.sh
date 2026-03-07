@@ -144,7 +144,7 @@ check_nvim_or_exit() {
 
 # ── Clone / backup ──────────────────────────────────────────────────────────
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
-REPO_URL="https://github.com/george/nvim.git"
+REPO_URL="https://github.com/InfJoker/nvim-config.git"
 
 clone_config() {
   if [[ -d "$CONFIG_DIR/.git" ]]; then

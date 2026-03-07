@@ -18,10 +18,8 @@ Personal Neovim configuration. Pure Lua, managed by [lazy.nvim](https://github.c
 ## Quick Install
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/george/nvim/main/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/InfJoker/nvim-config/main/install.sh)
 ```
-
-> Update the URL above once the repo is hosted.
 
 ## Manual Install
 
@@ -30,7 +28,7 @@ bash <(curl -s https://raw.githubusercontent.com/george/nvim/main/install.sh)
 mv ~/.config/nvim ~/.config/nvim.bak
 
 # Clone
-git clone https://github.com/george/nvim.git ~/.config/nvim
+git clone https://github.com/InfJoker/nvim-config.git ~/.config/nvim
 
 # Launch — plugins and LSP servers install automatically
 nvim
