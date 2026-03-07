@@ -62,3 +62,20 @@ StyLua is configured (`.stylua.toml`): 120 col width, 2-space indent, double quo
 - Completion: nvim-cmp with sources: LSP, lua, luasnip, buffer, path
 - ToggleTerm: float by default, lazygit exposed via `_LAZYGIT_TOGGLE()` global
 - Diagnostics: virtual text disabled, signs + underline + floating windows enabled
+
+## Nerd Font Icons
+
+All icons use `\u{XXXX}` escape sequences, NOT literal glyphs, so Claude Code
+can read and preserve them.
+
+Convention:
+    Text = "\u{F77E}", -- nf-md-format_text
+
+To find a codepoint in Neovim: cursor on glyph, then:
+    :echo printf("0x%X", char2nr(expand("<cword>")))
+
+Or search https://www.nerdfonts.com/cheat-sheet
+
+Never paste literal Nerd Font glyphs — always use \u{} escapes.
+Some lines have intentionally empty strings "" (e.g., lualine separators,
+cmp source menu) — do not add icons to these.

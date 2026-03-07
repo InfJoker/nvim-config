@@ -6,7 +6,7 @@ local M = {
 
 M.main = "ibl"
 M.opts = {
-  indent = { char = "▏" },
+  indent = { char = "\u{258F}" },
   scope = { enabled = true },
   exclude = {
     buftypes = { "terminal", "nofile" },

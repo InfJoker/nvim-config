@@ -24,7 +24,7 @@ function M.config()
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
-    symbols = { error = " ", warn = " " },
+    symbols = { error = "\u{F057} ", warn = "\u{F071} " },
     colored = false,
     always_visible = true,
   }
@@ -32,7 +32,7 @@ function M.config()
   local diff = {
     "diff",
     colored = false,
-    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+    symbols = { added = "\u{F457} ", modified = "\u{F459} ", removed = "\u{F458} " }, -- changes diff symbols
     cond = hide_in_width,
   }
 

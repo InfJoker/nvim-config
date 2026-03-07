@@ -8,7 +8,7 @@ function M.config()
   require("nvim-web-devicons").setup {
     override = {
       zsh = {
-        icon = "",
+        icon = "\u{E795}",
         color = "#428850",
         cterm_color = "65",
         name = "Zsh",

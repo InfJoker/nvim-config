@@ -14,7 +14,7 @@ local M = {
 function M.config()
   require("dapui").setup {
     expand_lines = true,
-    icons = { expanded = "", collapsed = "", circular = "" },
+    icons = { expanded = "\u{F0DD}", collapsed = "\u{F0DA}", circular = "\u{F110}" },
     mappings = {
       -- Use a table to apply multiple mappings
       expand = { "<CR>", "<2-LeftMouse>" },
@@ -54,7 +54,7 @@ function M.config()
     },
   }
 
-  vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+  vim.fn.sign_define("DapBreakpoint", { text = "\u{F188}", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 end
 
 return M
