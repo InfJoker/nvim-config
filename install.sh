@@ -48,7 +48,7 @@ check_nvim_version() {
   ver=$(nvim --version | head -1 | grep -oE '[0-9]+\.[0-9]+')
   major=${ver%%.*}
   minor=${ver#*.}
-  (( major > 0 || minor >= 9 ))
+  (( major > 0 || minor >= 11 ))
 }
 
 get_field() {
@@ -67,7 +67,7 @@ pm_index() {
 
 # Dependency entries: "display_name|test_cmd|brew_pkg|apt_pkg|dnf_pkg|pacman_pkg"
 REQUIRED=(
-  "neovim (>= 0.9)|nvim|neovim|neovim|neovim|neovim"
+  "neovim (>= 0.11)|nvim|neovim|neovim|neovim|neovim"
   "git|git|git|git|git|git"
 )
 
@@ -85,7 +85,6 @@ OPTIONAL=(
   "stylua|stylua|stylua|stylua|stylua|stylua"
   "prettier|prettier|prettier|prettier|prettier|prettier"
   "black|black|black|black|black|python-black"
-  "flake8|flake8|flake8|flake8|flake8|flake8"
 )
 
 # ── Check a list, print status, echo missing packages to stdout ──────────────
@@ -132,12 +131,12 @@ check_nvim_or_exit() {
     ok "neovim $(nvim --version | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
   else
     if has nvim; then
-      err "Neovim >= 0.9 is required (found $(nvim --version | head -1))"
+      err "Neovim >= 0.11 is required (found $(nvim --version | head -1))"
     else
       err "Neovim is not installed."
     fi
     echo ""
-    info "Install neovim >= 0.9 and re-run this script."
+    info "Install neovim >= 0.11 and re-run this script."
     exit 1
   fi
 }

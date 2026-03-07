@@ -6,7 +6,7 @@ Personal Neovim configuration. Pure Lua, managed by [lazy.nvim](https://github.c
 
 | Dependency | Notes |
 |---|---|
-| [Neovim](https://neovim.io/) >= 0.9 | Required |
+| [Neovim](https://neovim.io/) >= 0.11 | Required |
 | [Git](https://git-scm.com/) | Required |
 | [Nerd Font](https://www.nerdfonts.com/) | Required for icons |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | Recommended (Telescope live grep) |
