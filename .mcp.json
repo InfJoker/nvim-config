@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "neovim": {
+      "command": "uv",
+      "args": [
+        "run", "--project", "/Users/george/nvim-mcp",
+        "python", "/Users/george/nvim-mcp/nvim_mcp_server.py"
+      ]
+    }
+  }
+}

@@ -8,6 +8,10 @@ local M = {
       commit = "a9d8cb68ee7184111dc66156c4a2ebabfbe01bc5",
       event = "VeryLazy",
     },
+    {
+      "nvim-neotest/nvim-nio",
+      commit = "21f5324bfac14e22ba26553caf69ec76ae8a7662",
+    },
   },
 }
 
