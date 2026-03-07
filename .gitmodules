@@ -1,0 +1,3 @@
+[submodule "mcp"]
+	path = mcp
+	url = git@github.com:InfJoker/nvim-mcp.git

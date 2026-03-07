@@ -57,7 +57,7 @@ end
 
 local M = {
   "coder/claudecode.nvim",
-  commit = "aa9a5cebebdbfa449c1c5ff229ba5d98e66bafed",
+  commit = "432121f0f5b9bda041030d1e9e83b7ba3a93dd8f",
   cmd = {
     "ClaudeCode",
     "ClaudeCodeFocus",

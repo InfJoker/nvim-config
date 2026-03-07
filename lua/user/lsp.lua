@@ -1,11 +1,11 @@
 local M = {
   "neovim/nvim-lspconfig",
-  commit = "bf81bef7d75a0f4a0cf61462b318ea00b3c97cc8",
+  commit = "2163c54bb6cfec53e3e555665ada945b8c8331b9",
   lazy = true,
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "99290b3ec1322070bcfb9e846450a46f6efa50f0",
+      commit = "cbc7b02bb99fae35cb42f514762b89b5126651ef",
     },
   },
 }
@@ -37,11 +37,11 @@ function M.config()
 
   local lspconfig = require "lspconfig"
   local on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
+    if client.name == "ts_ls" then
       client.server_capabilities.documentFormattingProvider = false
     end
 
-    if client.name == "sumneko_lua" then
+    if client.name == "lua_ls" then
       client.server_capabilities.documentFormattingProvider = false
     end
 
@@ -65,23 +65,17 @@ function M.config()
     lspconfig[server].setup(Opts)
   end
 
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
-
   local config = {
     -- disable virtual text
     virtual_text = false,
     -- show signs
     signs = {
-      active = signs,
+      text = {
+        [vim.diagnostic.severity.ERROR] = "",
+        [vim.diagnostic.severity.WARN] = "",
+        [vim.diagnostic.severity.HINT] = "",
+        [vim.diagnostic.severity.INFO] = "",
+      },
     },
     update_in_insert = true,
     underline = true,

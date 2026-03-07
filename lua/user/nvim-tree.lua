@@ -1,12 +1,23 @@
 local M = {
   "kyazdani42/nvim-tree.lua",
-  commit = "59e65d88db177ad1e6a8cffaafd4738420ad20b6",
-  event = "VimEnter"
+  commit = "4b30847c91d498446cb8440c03031359b045e050",
+  event = "VimEnter",
 }
 
 function M.config()
-  local tree_cb = require("nvim-tree.config").nvim_tree_callback
+  local function on_attach(bufnr)
+    local api = require "nvim-tree.api"
+    local opts = function(desc)
+      return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+    api.config.mappings.default_on_attach(bufnr)
+    vim.keymap.set("n", "l", api.node.open.edit, opts "Open")
+    vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close Directory")
+    vim.keymap.set("n", "v", api.node.open.vertical, opts "Open: Vertical Split")
+  end
+
   require("nvim-tree").setup {
+    on_attach = on_attach,
     update_focused_file = {
       enable = true,
       update_cwd = true,
@@ -15,7 +26,7 @@ function M.config()
       icons = {
         glyphs = {
           default = "",
-          symlink = "",
+          symlink = "",
           folder = {
             arrow_open = "",
             arrow_closed = "",
@@ -51,13 +62,6 @@ function M.config()
     view = {
       width = 30,
       side = "left",
-      mappings = {
-        list = {
-          { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-          { key = "h",                  cb = tree_cb "close_node" },
-          { key = "v",                  cb = tree_cb "vsplit" },
-        },
-      },
     },
   }
 end

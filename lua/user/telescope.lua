@@ -1,12 +1,12 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  commit = "a0bbec21143c7bc5f8bb02e0005fa0b982edc026",
+  commit = "5255aa27c422de944791318024167ad5d40aad20",
   event = "Bufenter",
   cmd = { "Telescope" },
   dependencies = {
     {
       "ahmedkhalf/project.nvim",
-      commit = "685bc8e3890d2feb07ccf919522c97f7d33b94e4",
+      commit = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb",
     },
   },
 }

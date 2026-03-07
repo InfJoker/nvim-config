@@ -1,6 +1,6 @@
 local M = {
   "mfussenegger/nvim-dap",
-  commit = "6b12294a57001d994022df8acbe2ef7327d30587",
+  commit = "a9d8cb68ee7184111dc66156c4a2ebabfbe01bc5",
   event = "VeryLazy",
 }
 
@@ -42,7 +42,7 @@ function M.config()
       request = "launch",
       program = function()
         local path
-        vim.ui.input({ prompt = "Path to executable: ", default = vim.loop.cwd() .. "/build/" }, function(input)
+        vim.ui.input({ prompt = "Path to executable: ", default = vim.uv.cwd() .. "/build/" }, function(input)
           path = input
         end)
         vim.cmd [[redraw]]
@@ -53,15 +53,5 @@ function M.config()
     },
   }
 end
-
-M = {
-  "ravenxrz/DAPInstall.nvim",
-  commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de",
-  lazy = true,
-  config = function()
-    require("dap_install").setup {}
-    require("dap_install").config("python", {})
-  end,
-}
 
 return M

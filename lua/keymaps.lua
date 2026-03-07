@@ -82,4 +82,4 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
-keymap("v", "<leader>lf", "<ESC><cmd>lua vim.lsp.buf.range_formatting()<CR>", {noremap = true})
+keymap("v", "<leader>lf", "<ESC><cmd>lua vim.lsp.buf.format{ async = true }<CR>", { noremap = true })
