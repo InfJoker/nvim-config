@@ -34,4 +34,8 @@ git clone https://github.com/InfJoker/nvim-config.git ~/.config/nvim
 nvim
 ```
 
+## Editing with Claude
+
+Claude Code can modify this config and verify changes through the bundled [nvim-mcp](mcp/) server. The MCP server spawns a Neovim instance, runs commands, executes Lua, sends keystrokes, and captures screenshots — so Claude can test its edits before you restart your editor.
+
 <!-- Screenshot placeholder: add a screenshot here -->
