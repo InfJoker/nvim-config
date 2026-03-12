@@ -7,14 +7,25 @@ local M = {
 function M.config()
   local alpha = require "alpha"
   local dashboard = require "alpha.themes.dashboard"
-  dashboard.section.header.val = {
-    [[                               __]],
-    [[  ___     ___    ___   __  __ /\_\]],
-    [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\]],
-    [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \]],
-    [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-    [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
-  }
+
+  -- Try to use shader-art for the header; fall back to static ASCII art
+  local shader_ok, shader_art = pcall(require, "shader-art")
+  local shader_element = nil
+  if shader_ok then
+    shader_element = shader_art.make_element { width = 69, height = 16, fps = 15 }
+  end
+
+  if not shader_element then
+    dashboard.section.header.val = {
+      [[                               __]],
+      [[  ___     ___    ___   __  __ /\_\]],
+      [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\]],
+      [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \]],
+      [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+      [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+    }
+  end
+
   dashboard.section.buttons.val = {
     dashboard.button("f", "\u{F0C5} " .. " Find file", ":Telescope find_files <CR>"),
     dashboard.button("e", "\u{F15B} " .. " New file", ":ene <BAR> startinsert <CR>"),
@@ -26,7 +37,7 @@ function M.config()
     dashboard.button("q", "\u{F011} " .. " Quit", ":qa<CR>"),
   }
   local function footer()
-    return "chrisatmachine.com"
+    return "Hello World!"
   end
 
   dashboard.section.footer.val = footer()
@@ -34,6 +45,20 @@ function M.config()
   dashboard.section.footer.opts.hl = "Type"
   dashboard.section.header.opts.hl = "Include"
   dashboard.section.buttons.opts.hl = "Keyword"
+
+  -- If shader element available, inject it into the layout replacing the header
+  if shader_element then
+    require "alpha.term" -- register the terminal layout element handler
+    local layout = {
+      { type = "padding", val = 2 },
+      shader_element,
+      { type = "padding", val = 2 },
+      dashboard.section.buttons,
+      { type = "padding", val = 1 },
+      dashboard.section.footer,
+    }
+    dashboard.opts.layout = layout
+  end
 
   dashboard.opts.opts.noautocmd = true
   alpha.setup(dashboard.opts)
